@@ -1,0 +1,53 @@
+﻿@model LayoutTest.Models.Account
+
+@{
+    ViewBag.Title = "Create Account";
+}
+
+<center>
+    <h2>Create Account</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>Account</legend>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Username)
+            </div>
+
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Username)
+                <font color="RED"> @Html.ValidationMessageFor(model => model.Username)</font>
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Email)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Email)
+                <font color="RED">@Html.ValidationMessageFor(model => model.Email)</font>
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Password)
+            </div>
+            <div class="editor-field">
+                <input type="password" name="Password" />
+                @*@Html.EditorFor(model => model.Password)*@
+                <font color="RED">@Html.ValidationMessageFor(model => model.Password)</font>
+            </div>
+
+            <p>
+                <input type="submit" value="Create" />
+            </p>
+
+
+        </fieldset>
+    }
+    <div>
+        @Html.ActionLink("Back", "Index", "Login")
+    </div>
+</center>

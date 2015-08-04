@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="@Url.Content("~/Content/main2.css")" />
+
+</head>
+<body>
+    <div id="the_big">
+
+        <header id="top_header">
+            <h1>| My GreenHouse</h1>
+        </header>
+
+        <footer id="the_footer">
+            <nav id="bottom_menu">
+                <ul>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Account", "ManageAcc", "Account")</li>
+                </ul>
+            </nav>
+        </footer>
+    </div>
+    <div id="main_section">
+        @RenderBody()
+    </div>
+</body>
+</html>

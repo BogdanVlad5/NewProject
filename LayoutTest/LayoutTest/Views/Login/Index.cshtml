@@ -1,0 +1,50 @@
+﻿@model LayoutTest.Models.Account
+
+@{
+    ViewBag.Title = "Index";
+}
+@*<style>
+    body {
+        background-image: url("cactusi.jpg");
+    }
+    fieldset {
+   background-color: rgba(128, 128, 128,0.7) 
+    }
+</style>*@
+@using (Html.BeginForm("Index","Login",FormMethod.Post)) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+<center>
+    <fieldset>
+        <legend>LogIn</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Username)
+        </div>
+
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Username)
+            <font color="RED"> @Html.ValidationMessageFor(model => model.Username)</font>
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            <input type="password" name="Password" />
+            @*@Html.EditorFor(model => model.Password)*@
+            <font color="RED">@Html.ValidationMessageFor(model => model.Password)</font>
+        </div>
+        <br/>
+        <p>
+            <input type="submit" value="Log In" />
+        </p>
+    <br/>
+    <div>
+        @Html.ActionLink("SignUp", "Index", "Account")
+    </div>
+    <div>
+        @Html.ActionLink("Recover Password", "RecoverPass", "Account")
+    </div>
+</fieldset>
+    </center>
+}

@@ -1,0 +1,48 @@
+﻿@model LayoutTest.Models.Account
+
+@{
+    ViewBag.Title = "ManageAcc";
+}
+<center>
+    @using (Html.BeginForm("ResetPass", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>Change Password</legend>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Username)
+            </div>
+
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Username)
+                <font color="RED"> @Html.ValidationMessageFor(model => model.Username)</font>
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Password)
+            </div>
+            <div class="editor-field">
+                <input type="password" name="Password" />
+                @*@Html.EditorFor(model => model.Password)*@
+                <font color="RED">@Html.ValidationMessageFor(model => model.Password)</font>
+            </div>
+            <div class="editor-field">
+                <div class="editor-label">
+                    <label>New Password </label>
+                </div>
+                <input type="password" name="NewPassword" />
+                @*@Html.EditorFor(model => model.Password)*@
+
+            </div>
+
+
+            <p>
+                <input type="submit" value="Change" />
+            </p>
+
+
+        </fieldset>
+    }
+</center>
